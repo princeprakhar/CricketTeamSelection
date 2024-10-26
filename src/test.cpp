@@ -1,6 +1,6 @@
-#include "Player.h"
-#include "Team.h"
-#include "TeamSelector.h"
+#include "header/Player.h"
+#include "header/Team.h"
+#include "header/TeamSelector.h"
 #include <iostream>
 #include <vector>
 #include <cassert>
@@ -35,7 +35,7 @@ void run_tests() {
 
         // Example assertions to validate the team's composition
         assert(team.calculate_team_rating() == (7 + 8 + 9 + 8 + 8 + 7 + 9 + 8 + 8 + 9 + 8) / 11.0f);
-        // Change the assertion to match the actual counts
+       
         auto [left_count, right_count] = team.get_batting_style_count();
         assert(left_count == 5 && right_count == 6);  // Corrected assertion
 

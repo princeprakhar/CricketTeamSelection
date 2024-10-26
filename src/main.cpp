@@ -1,6 +1,6 @@
-#include "Player.h"
-#include "Team.h"
-#include "TeamSelector.h"
+#include "header/player.h"
+#include "header/Team.h"
+#include "header/TeamSelector.h"
 #include <iostream>
 #include <vector>
 #include <fstream>
@@ -53,7 +53,7 @@ void loadPlayersFromFile(const string& filename, vector<Player>& players) {
 
 int main() {
     vector<Player> players;
-    loadPlayersFromFile("player.txt", players);
+    loadPlayersFromFile("../data/player.txt", players);
 
     if (players.empty()) {
         cerr << "No players loaded. Exiting." << endl;
