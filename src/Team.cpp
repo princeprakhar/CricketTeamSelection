@@ -15,6 +15,16 @@ float Team::calculate_team_rating() const {
     return total_rating / players.size();
 }
 
+
+vector<Player>  Team::get_team_player() const {
+    return players;
+}
+
+
+string Team::get_team_name() const {
+    return this->name;
+}
+
 pair<int, int> Team::get_batting_style_count() const {
     int left_count = 0, right_count = 0;
     for (const auto& player : players) {
