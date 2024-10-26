@@ -5,6 +5,7 @@
 #include <vector>
 #include <fstream>
 #include <sstream>
+#include <iomanip> 
 using namespace std;
 
 void loadPlayersFromFile(const string& filename, vector<Player>& players) {
@@ -51,6 +52,26 @@ void loadPlayersFromFile(const string& filename, vector<Player>& players) {
     file.close();
 }
 
+void printTeamPlayers(const string& team_name, const vector<Player>& team_players) {
+    cout << "Team name: " << team_name << endl << endl;
+
+    cout << left << setw(20) << "Player Name"
+         << setw(15) << "Role"
+         << setw(20) << "Performance Rating"
+         << setw(20) << "Experience Level"
+         << setw(15) << "Batting Style" << endl;
+
+    cout << string(90, '-') << endl; // Print a separator line
+
+    for (const Player& tp : team_players) {
+        cout << left << setw(20) << tp.getName()
+             << setw(15) << tp.getRole()
+             << setw(20) << tp.getPerformanceRating()
+             << setw(20) << tp.getExperienceLevel()
+             << setw(15) << tp.getBattingStyle() << endl;
+    }
+}
+
 int main() {
     vector<Player> players;
     loadPlayersFromFile("../data/player.txt", players);
@@ -60,7 +81,12 @@ int main() {
         return 1; 
     }
 
+
     Team selected_team = TeamSelector::select_team("Dream Team", players);
+    string s= selected_team.get_team_name();
+    vector<Player> team_players = selected_team.get_team_player();
+    printTeamPlayers(s, team_players);
+
     cout << "Selected team rating: " << selected_team.calculate_team_rating() << endl;
 
     return 0;
