@@ -1,10 +1,12 @@
 #include "TeamSelector.h"
+using namespace std;
 
-Team TeamSelector::select_team(const std::string& team_name, const std::vector<Player>& available_players) {
+
+Team TeamSelector::select_team(const string& team_name, const vector<Player>& available_players) {
     Team selected_team(team_name);
-    std::vector<Player> batsmen;
-    std::vector<Player> bowlers;
-    std::vector<Player> all_rounders;
+    vector<Player> batsmen;
+    vector<Player> bowlers;
+    vector<Player> all_rounders;
 
     for (const auto& player : available_players) {
         if (player.getRole() == "Batsman") batsmen.push_back(player);

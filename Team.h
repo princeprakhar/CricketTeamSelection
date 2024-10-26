@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include <utility>
+using namespace std;
 
 class Team {
 private:
