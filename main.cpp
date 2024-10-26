@@ -5,19 +5,20 @@
 #include <vector>
 #include <fstream>
 #include <sstream>
+using namespace std;
 
-void loadPlayersFromFile(const std::string& filename, std::vector<Player>& players) {
-    std::ifstream file(filename);
-    std::string line;
+void loadPlayersFromFile(const string& filename, vector<Player>& players) {
+    ifstream file(filename);
+    string line;
 
     if (!file.is_open()) {
-        std::cerr << "Error: Could not open the file." << std::endl;
+        cerr << "Error: Could not open the file." << endl;
         return;
     }
 
     while (getline(file, line)) {
-        std::stringstream ss(line);
-        std::string name, battingStyle, bowlingType, role;
+        stringstream ss(line);
+        string name, battingStyle, bowlingType, role;
         int age, performanceRating, experienceLevel;
         double strikeRate, economyRate, fitnessLevel, averageScore, catchesTaken;
 
@@ -51,16 +52,16 @@ void loadPlayersFromFile(const std::string& filename, std::vector<Player>& playe
 }
 
 int main() {
-    std::vector<Player> players;
+    vector<Player> players;
     loadPlayersFromFile("player.txt", players);
 
     if (players.empty()) {
-        std::cerr << "No players loaded. Exiting." << std::endl;
-        return 1; // Exit if no players were loaded
+        cerr << "No players loaded. Exiting." << endl;
+        return 1; 
     }
 
     Team selected_team = TeamSelector::select_team("Dream Team", players);
-    std::cout << "Selected team rating: " << selected_team.calculate_team_rating() << std::endl;
+    cout << "Selected team rating: " << selected_team.calculate_team_rating() << endl;
 
     return 0;
 }
